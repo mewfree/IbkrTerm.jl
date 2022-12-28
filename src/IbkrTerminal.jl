@@ -1,15 +1,37 @@
 module IbkrTerminal
 
+import HTTP
+import JSON
+
+Base.exit_on_sigint(false)
+
+url = "https://localhost:5000/v1/portal"
+
 loop = true
+accounts = nothing
 
 function handle(cmd)
-    if cmd == "net_worth" || cmd == "nw"
-        println("Display net worth")
-    elseif cmd == "exit" || cmd == "quit"
-        exit()
+    if cmd == "accounts"
+        accounts === nothing ? fetch_accounts() : nothing
+        println(accounts)
+    elseif cmd ∈ ["exit", "quit"]
+        stop()
     else
         println("Command not found")
     end
+end
+
+function fetch_accounts()
+    r = HTTP.request("GET", url * "/portfolio/accounts", require_ssl_verification=false)
+    s = String(r.body)
+    j = JSON.parse(s)
+    global accounts = j
+    return accounts
+end
+
+function stop()
+    println("Bye!")
+    exit()
 end
 
 function run()
@@ -19,8 +41,7 @@ function run()
             print("> ")
             handle(readline())
         catch _
-            println("Bye!")
-            exit()
+            stop()
         end
     end
 end
