@@ -1,4 +1,4 @@
-module IbkrTerminal
+module IbkrTerm
 
 import HTTP
 import JSON

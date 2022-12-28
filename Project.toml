@@ -1,4 +1,4 @@
-name = "IbkrTerminal"
+name = "IbkrTerm"
 uuid = "2690df31-90a1-44b6-936e-ca9dea47c6c0"
 authors = ["Damien Gonot <damien.gonot@gmail.com>"]
 version = "0.1.0"
