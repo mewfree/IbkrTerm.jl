@@ -1,3 +1,10 @@
 #+title: IbkrTerm.jl
 
 A terminal for Interactive Brokers.
+
+* How to Run?
+While IBKR Client Portal API Gateway running: =julia src/IbkrTerm.jl=
+
+* Commands Available
+- =accounts= to display list of accounts' metadata
+- =exit= | =quit= to exit the terminal
