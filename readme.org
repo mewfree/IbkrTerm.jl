@@ -7,4 +7,5 @@ While IBKR Client Portal API Gateway running: =julia src/IbkrTerm.jl=
 
 * Commands Available
 - =accounts= to display list of accounts' metadata
+- =net liquidation value= | =nlv= to display each account's Net Liquidation Value
 - =exit= | =quit= to exit the terminal
