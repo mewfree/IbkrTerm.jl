@@ -3,7 +3,8 @@
 A terminal for Interactive Brokers.
 
 * How to Run?
-While IBKR Client Portal API Gateway running: =julia src/IbkrTerm.jl=
+- Follow [[https://interactivebrokers.github.io/cpwebapi/quickstart][Quickstart Guide]] for IBKR Client Portal API
+- While IBKR Client Portal API Gateway is running: =julia src/IbkrTerm.jl=
 
 * Commands Available
 - =accounts= to display list of accounts' metadata
