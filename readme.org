@@ -9,4 +9,5 @@ A terminal for Interactive Brokers.
 * Commands Available
 - =accounts= to display list of accounts' metadata
 - =net liquidation value= | =nlv= to display each account's Net Liquidation Value
+- =leverage= to display each account's leverage
 - =exit= | =quit= to exit the terminal

@@ -21,6 +21,12 @@ function handle(cmd)
             nlv = fetch_nlv(account["id"])
             println(account["accountAlias"] * " (" * account["id"] * ") " * "Net Liquidation Value: " * format(nlv["amount"], commas=true, precision=0) * " " * nlv["currency"])
         end
+    elseif cmd == "leverage"
+        accounts === nothing ? fetch_accounts() : nothing
+        for account in accounts
+            leverage = fetch_leverage(account["id"])
+            println(account["accountAlias"] * " (" * account["id"] * ") " * "Leverage: " * leverage["value"])
+        end
     elseif cmd ∈ ["exit", "quit"]
         stop()
     else
@@ -41,6 +47,13 @@ function fetch_nlv(accountId)
     s = String(r.body)
     j = JSON.parse(s)
     return j["netliquidation"]
+end
+
+function fetch_leverage(accountId)
+    r = HTTP.request("GET", url * "/portfolio/" * accountId * "/summary", require_ssl_verification=false)
+    s = String(r.body)
+    j = JSON.parse(s)
+    return j["leverage-s"]
 end
 
 function stop()
