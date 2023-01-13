@@ -39,6 +39,11 @@ function handle(cmd)
     end
 end
 
+function is_gateway_up()
+    r = HTTP.request("GET", "https://localhost:5000", require_ssl_verification=false)
+    return r.status
+end
+
 function fetch_accounts()
     r = HTTP.request("GET", url * "/portfolio/accounts", require_ssl_verification=false)
     s = String(r.body)
@@ -81,7 +86,14 @@ function stop()
 end
 
 function run()
-    println("Welcome to IBKR Terminal")
+    try
+        is_gateway_up()
+        println("Welcome to IBKR Terminal")
+    catch _
+        println("IBKR Client Portal API Gateway doesn't appear to be running.")
+        stop()
+    end
+
     while loop
         try
             print("> ")
