@@ -12,3 +12,6 @@ A terminal for Interactive Brokers.
 - =price {symbol}= | =p {symbol}= to display last price of symbol (example: =price XGRO=)
 - =leverage= to display each account's leverage
 - =exit= | =quit= to exit the terminal
+
+* Resources
+- IBKR Client Portal API endpoints: https://interactivebrokers.github.io/cpwebapi/endpoints
